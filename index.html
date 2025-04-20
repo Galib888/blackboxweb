@@ -30,46 +30,14 @@
       position: relative;
       overflow-x: hidden;
     }
-    /* Particles */
-    #particles-js {
-      position: fixed; width: 100%; height: 100%;
-      top: 0; left: 0; z-index: 0;
-    }
-    header {
-      background: rgba(0,0,0,0.7);
-      width: 100%; padding: 2em;
-      text-align: center; z-index: 1;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-    header h1 {
-      font-size: 2.8em; margin-bottom: 0.3em;
-      color: #ff3333;
-      text-shadow: 0 0 10px rgba(255,51,51,0.8);
-    }
-    header p {
-      font-size: 1.1em; color: #d0d0d0; margin-bottom: 0.5em;
-    }
-    header p a {
-      color: #ff3333; text-decoration: underline;
-    }
-    .container {
-      background: rgba(20,20,30,0.85);
-      padding: 2em; border-radius: 15px;
-      border: 1px solid #ff3333;
-      width: 90%; max-width: 400px;
-      margin: 2em 0; text-align: center;
-      z-index: 1;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.6);
-    }
-    .section-title {
-      color: #ff3333;
-      font-size: 1.4em;
-      margin-bottom: 1em;
-    }
-    input, button {
-      width: 100%; padding: 10px;
-      margin: 10px 0; border-radius: 5px;
-    }
+    #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 0; }
+    header { background: rgba(0,0,0,0.7); width: 100%; padding: 2em; text-align: center; z-index: 1; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+    header h1 { font-size: 2.8em; margin-bottom: 0.3em; color: #ff3333; text-shadow: 0 0 10px rgba(255,51,51,0.8); }
+    header p { font-size: 1.1em; color: #d0d0d0; margin-bottom: 0.5em; }
+    header p a { color: #ff3333; text-decoration: underline; }
+    .container { background: rgba(20,20,30,0.85); padding: 2em; border-radius: 15px; border: 1px solid #ff3333; width: 90%; max-width: 400px; margin: 2em 0; text-align: center; z-index: 1; box-shadow: 0 6px 15px rgba(0,0,0,0.6); }
+    .section-title { color: #ff3333; font-size: 1.4em; margin-bottom: 1em; }
+    input, button { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; }
     .btn { border: none; cursor: pointer; font-size: 16px; font-weight: bold; transition: 0.3s; }
     .btn-primary { background: #ff0000; color: white; }
     .btn-primary:hover { background: #b00000; }
@@ -79,12 +47,7 @@
     .active { display: block; }
     .user-info, .premium-section, .redeem-section { display: none; margin-top: 15px; }
     .premium-section input, .redeem-section input { background: #222; color: #fff; border: 1px solid #444; }
-    footer {
-      background: rgba(0,0,0,0.7);
-      width: 100%; padding: 1em; text-align: center;
-      color: #d0d0d0; margin-top: auto; z-index: 1;
-      box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
-    }
+    footer { background: rgba(0,0,0,0.7); width: 100%; padding: 1em; text-align: center; color: #d0d0d0; margin-top: auto; z-index: 1; box-shadow: 0 -4px 10px rgba(0,0,0,0.5); }
   </style>
 </head>
 <body>
@@ -105,7 +68,6 @@
       <input type="email" id="signin-email" placeholder="Enter your email">
       <input type="password" id="signin-password" placeholder="Enter your password">
       <button id="signin" class="btn btn-primary">Sign In</button>
-      <button id="google-signin" class="btn btn-primary">Continue with Google</button>
       <p class="toggle-text" onclick="toggleAuth('signup')">New? Sign Up</p>
     </div>
 
@@ -153,19 +115,9 @@
     particlesJS('particles-js', {
       particles: {
         number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: "#ffffff" },
-        shape: { type: "circle" },
-        opacity: { value: 0.4 },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.2, width: 1 },
-        move: { enable: true, speed: 2 }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } },
-        modes: { grab: { distance: 140, line_linked: { opacity: 1 } }, push: { particles_nb: 4 } }
-      },
-      retina_detect: true
+        color: { value: "#ffffff" }, shape: { type: "circle" }, opacity: { value: 0.4 }, size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: "#ffffff", opacity: 0.2, width: 1 }, move: { enable: true, speed: 2 }
+      }, interactivity: { detect_on: "canvas", events: { onhover: { enable: true, mode: "grab" }, onclick: { enable: true, mode: "push" } }, modes: { grab: { distance: 140, line_linked: { opacity: 1 } }, push: { particles_nb: 4 } } }, retina_detect: true
     });
   </script>
 
@@ -187,126 +139,94 @@
 
     // Toggle between Sign In / Sign Up
     function toggleAuth(section) {
-      document.getElementById("signin-section").classList.toggle("active", section === "signin");
-      document.getElementById("signup-section").classList.toggle("active", section === "signup");
+      document.getElementById('signin-section').classList.toggle('active', section === 'signin');
+      document.getElementById('signup-section').classList.toggle('active', section === 'signup');
     }
 
     // Sign In
-    document.getElementById("signin").addEventListener("click", () => {
-      const email = document.getElementById("signin-email").value;
-      const password = document.getElementById("signin-password").value;
+    document.getElementById('signin').addEventListener('click', () => {
+      const email = document.getElementById('signin-email').value;
+      const password = document.getElementById('signin-password').value;
       auth.signInWithEmailAndPassword(email, password)
-        .then(uc => checkPremiumStatus(uc.user))
-        .catch(e => alert(e.message));
-    });
-
-    // Google Sign-In
-    document.getElementById("google-signin").addEventListener("click", () => {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithPopup(provider)
-        .then(uc => checkPremiumStatus(uc.user))
+        .then(res => checkPremiumStatus(res.user))
         .catch(e => alert(e.message));
     });
 
     // Sign Up with Email Verification
-    document.getElementById("signup").addEventListener("click", () => {
-      const email = document.getElementById("signup-email").value;
-      const password = document.getElementById("signup-password").value;
+    document.getElementById('signup').addEventListener('click', () => {
+      const email = document.getElementById('signup-email').value;
+      const password = document.getElementById('signup-password').value;
       auth.createUserWithEmailAndPassword(email, password)
-        .then(uc => {
-          uc.user.sendEmailVerification()
-            .then(() => {
-              alert("Verification email sent. Please verify and then sign in.");
-              auth.signOut();
-            })
-            .catch(e => alert("Error sending verification email: " + e.message));
-        })
+        .then(res => res.user.sendEmailVerification()
+          .then(() => { alert('Verification email sent. Please verify and then sign in.'); auth.signOut(); })
+          .catch(e => alert('Error sending verification email: ' + e.message))
+        )
         .catch(e => alert(e.message));
     });
 
     // Logout
-    document.getElementById("logout").addEventListener("click", () => {
-      auth.signOut().then(() => location.reload());
-    });
+    document.getElementById('logout').addEventListener('click', () => auth.signOut().then(() => location.reload()));
 
     // Check Premium Status & toggle UI
     async function checkPremiumStatus(user) {
-      document.getElementById("signin-section").style.display = "none";
-      document.getElementById("signup-section").style.display = "none";
-      document.getElementById("user-name").innerText = user.email;
-      document.getElementById("user-info").style.display = "block";
+      document.getElementById('signin-section').style.display = 'none';
+      document.getElementById('signup-section').style.display = 'none';
+      document.getElementById('user-name').innerText = user.email;
+      document.getElementById('user-info').style.display = 'block';
 
-      const snap = await db.collection("blackbox_keys")
-                         .where("assigned_to", "==", user.email)
-                         .get();
-
+      const snap = await db.collection('blackbox_keys').where('assigned_to', '==', user.email).get();
       if (!snap.empty) {
         const data = snap.docs[0].data();
         currentSid = data.sid || null;
-
-        document.getElementById("premium-status").innerText = "✅ Premium Activated!";
-        document.getElementById("sid-info").innerText = currentSid
-          ? `SID: ${currentSid}`
-          : "SID: Not Set";
-
-        const last = data.reset_cooldown
-          ? data.reset_cooldown.toDate()
-          : null;
-        document.getElementById("reset-time").innerText = last
-          ? `Last Reset: ${last.toDateString()}`
-          : "Reset Time: Not Available";
-
-        const canUpdate = !last || (Date.now() - last.getTime()) > 9*24*60*60*1000;
-        document.getElementById("update-sid-section").style.display = canUpdate ? "block" : "none";
-
-        document.getElementById("premium-section").style.display = "block";
-        document.getElementById("redeem-section").style.display = "none";
+        document.getElementById('premium-status').innerText = '✅ Premium Activated!';
+        document.getElementById('sid-info').innerText = currentSid ? `SID: ${currentSid}` : 'SID: Not Set';
+        const last = data.reset_cooldown ? data.reset_cooldown.toDate() : null;
+        document.getElementById('reset-time').innerText = last ? `Last Reset: ${last.toDateString()}` : 'Reset Time: Not Available';
+        document.getElementById('update-sid-section').style.display = (!last || (Date.now() - last.getTime()) > 9*24*60*60*1000) ? 'block' : 'none';
+        document.getElementById('premium-section').style.display = 'block';
+        document.getElementById('redeem-section').style.display = 'none';
       } else {
-        document.getElementById("premium-section").style.display = "none";
-        document.getElementById("redeem-section").style.display = "block";
+        document.getElementById('premium-section').style.display = 'none';
+        document.getElementById('redeem-section').style.display = 'block';
       }
     }
 
     // Update SID via Netlify function
-    document.getElementById("update-sid").addEventListener("click", async () => {
-      const newSid = document.getElementById("new-sid").value.trim();
-      if (!newSid || !currentSid) return alert("Invalid new SID or no existing SID!");
-
+    document.getElementById('update-sid').addEventListener('click', async () => {
+      const newSid = document.getElementById('new-sid').value.trim();
+      if (!newSid || !currentSid) return alert('Invalid new SID or no existing SID!');
       const url = `https://apiblackbox.netlify.app/.netlify/functions/updatesid?old_sid=${encodeURIComponent(currentSid)}&new_sid=${encodeURIComponent(newSid)}`;
       try {
         const res = await fetch(url);
         const json = await res.json();
-        if (!res.ok) throw new Error(json.error || "Unknown error");
+        if (!res.ok) throw new Error(json.error || 'Unknown error');
         alert(json.message);
         checkPremiumStatus(auth.currentUser);
       } catch (e) {
-        alert("Reload The Page.");
+        alert('Reload The Page.');
       }
     });
 
     // Redeem Key via Netlify function
-    document.getElementById("redeem").addEventListener("click", async () => {
-      const key = document.getElementById("redeem-key").value.trim();
-      const sid = document.getElementById("redeem-sid").value.trim();
+    document.getElementById('redeem').addEventListener('click', async () => {
+      const key = document.getElementById('redeem-key').value.trim();
+      const sid = document.getElementById('redeem-sid').value.trim();
       const user = auth.currentUser;
-      if (!key || !sid || !user) return alert("Enter a valid key, SID, and make sure you’re signed in!");
-
+      if (!key || !sid || !user) return alert('Enter a valid key, SID, and make sure you’re signed in!');
       const url = `https://apiblackbox.netlify.app/.netlify/functions/redeemkey?email=${encodeURIComponent(user.email)}&redeem_key=${encodeURIComponent(key)}&sid=${encodeURIComponent(sid)}`;
       try {
         const res = await fetch(url);
         const json = await res.json();
-        if (!res.ok) throw new Error(json.error || "Unknown error");
+        if (!res.ok) throw new Error(json.error || 'Unknown error');
         alert(json.message);
         checkPremiumStatus(user);
       } catch (e) {
-        alert("Reload The Page.");
+        alert('Reload The Page.');
       }
     });
 
     // Buy Premium Key button
-    document.getElementById("buy-key").addEventListener("click", () => {
-      window.location.href = "https://discord.gg/8CyPVNbd7z";
-    });
+    document.getElementById('buy-key').addEventListener('click', () => window.location.href = 'https://discord.gg/8CyPVNbd7z');
   </script>
 </body>
 </html>
